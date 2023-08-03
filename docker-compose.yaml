@@ -1,4 +1,4 @@
-version: '1'
+version: '2.2'
 
 services:
   backend:
@@ -29,7 +29,6 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
-      start_period: 40s
 
   mongo-express:
     image: mongo-express
