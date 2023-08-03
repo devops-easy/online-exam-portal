@@ -140,7 +140,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd project-directory
+  cd online-exam-portal
 ```
 
 Install dependencies
