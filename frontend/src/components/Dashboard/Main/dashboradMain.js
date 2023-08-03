@@ -54,7 +54,25 @@ class DashboardMain extends React.Component {
 
   render(){
     console.log(this.props.user);
-    return (
+    
+    if(!Auth.retriveToken() || Auth.retriveToken()==='undefined'){
+      return (<Navigate to='/'/>);
+    } else if(!this.props.user.isLoggedIn) {
+      this.props.getAdminDetails();
+      return (<div></div>);
+    } else {
+      if(!this.props.dashboardDetails.retrived){
+        this.props.getDashboardCount();
+      }
+      let x;
+      if(this.expand === "Teacher") {
+        x = <TeacherTable/>;
+      } else if (this.expand === "Student") {
+        x = <StudentTable/>;
+      } else if (this.expand === "Subject") {
+        x = <SubjectTable/>;
+      }
+        return (
           <div>
             <HomepageHeader title='Exam Portal' img={logoImg}/>
             <div className={this.props.classes.headerMargin}></div>
@@ -76,54 +94,11 @@ class DashboardMain extends React.Component {
             </div>
             <br/>
 
-        
+            {x}
           </div>
         );
 
-  //   if(!Auth.retriveToken() || Auth.retriveToken()==='undefined'){
-  //     return (<Navigate to='/'/>);
-  //   } else if(!this.props.user.isLoggedIn) {
-  //     this.props.getAdminDetails();
-  //     return (<div></div>);
-  //   } else {
-  //     if(!this.props.dashboardDetails.retrived){
-  //       this.props.getDashboardCount();
-  //     }
-  //     let x;
-  //     if(this.expand === "Teacher") {
-  //       x = <TeacherTable/>;
-  //     } else if (this.expand === "Student") {
-  //       x = <StudentTable/>;
-  //     } else if (this.expand === "Subject") {
-  //       x = <SubjectTable/>;
-  //     }
-  //       return (
-  //         <div>
-  //           <HomepageHeader title='Exam Portal' img={logoImg}/>
-  //           <div className={this.props.classes.headerMargin}></div>
-  //           <button onClick={()=>(this.logout(this))} className={this.props.classes.logout_btn} >Logout</button>
-  //           <br/>
-  //           <MainCard title='Teacher' value={this.props.dashboardDetails.teacherActive} total={this.props.dashboardDetails.teacherActive + this.props.dashboardDetails.teacherBlocked}  image={TeacherImg} />
-  //           <div className={this.props.classes.inlineblock}>
-  //             <button ><Link to="/addTeacher" className={this.props.classes.linkbtn}>Add Teacher</Link></button>
-  //             <br/>
-  //             <button onClick={()=>(this.handleTableExapand("Teacher"))}>Show</button>
-  //           </div>
-  //           <MainCard title='Student' value={this.props.dashboardDetails.studentActive} total={this.props.dashboardDetails.studentActive + this.props.dashboardDetails.studentBlocked} image={StudentImg} />
-  //           <button onClick={()=>(this.handleTableExapand("Student"))}>Show</button>
-  //           <MainCard title='Subject' value={this.props.dashboardDetails.subjectActive} total={this.props.dashboardDetails.subjectActive + this.props.dashboardDetails.subjectBlocked} image={SubjectImg} />
-  //           <div className={this.props.classes.inlineblock}>
-  //             <button ><Link to="/addSubject" className={this.props.classes.linkbtn}>Add Subject</Link></button>
-  //             <br/>
-  //             <button onClick={()=>(this.handleTableExapand("Subject"))}>Show</button>
-  //           </div>
-  //           <br/>
-
-  //           {x}
-  //         </div>
-  //       );
-
-  //   }
+    }
     
   }
 }
