@@ -230,7 +230,7 @@ Distributed under the no License.
 <!-- Contact -->
 ## :handshake: Contact
 
-Chintan Golakiya - [@_chint4n_](https://twitter.com/devopseasy_) - devopseasy@gmail.com
+Devops Easy - [@devopseasy](https://twitter.com/devopseasy_) - devopseasy@gmail.com
 
 Project Link: [https://github.com/devops-easy/online-exam-portal](https://github.com/devops-easy/online-exam-portal)
 
