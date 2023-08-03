@@ -76,7 +76,7 @@ class DashboardMain extends React.Component {
             </div>
             <br/>
 
-            {x}
+            // {x}
           </div>
         );
 
