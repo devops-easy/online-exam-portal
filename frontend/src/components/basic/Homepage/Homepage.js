@@ -9,20 +9,19 @@ import logoImg from './main.jpg';
 
 function Homepage(){
   console.log("on home page");
-  return (<Navigate to='/home'/>);
-  // if(Auth.retriveToken() && Auth.retriveToken()!=='undefined'){
-  //   return (<Navigate to='/home'/>);
-  // }
-  // else {
-  //   return (
-  //     <div>
-  //         <div className="parallax">
-  //           <HomepageHeader title='Exam Portal' img={logoImg}/>
-  //           <Login />
-  //         </div>
-  //     </div>
-  //   );
-  // }
+  if(Auth.retriveToken() && Auth.retriveToken()!=='undefined'){
+    return (<Navigate to='/home'/>);
+  }
+  else {
+    return (
+      <div>
+          <div className="parallax">
+            <HomepageHeader title='Exam Portal' img={logoImg}/>
+            <Login />
+          </div>
+      </div>
+    );
+  }
 }
 
 export default Homepage;
